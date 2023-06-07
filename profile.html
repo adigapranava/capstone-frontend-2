@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <title>Profile Page</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <span style="font-family: 'Ubuntu', sans-serif; font-size: 1.5rem;">PCUBE</span>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/pythonimageupload-99434.appspot.com/o/praadiga%2Fpasport.jpg?alt=media&token=e4637d44-8b73-40b9-8ff9-06543bcf990d" width="30" height="30" alt="User Photo" id="prfile-pic">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="margin: 50px;">
+        <div class="card-group" id="cards">
+
+          </div>          
+    </div>
+    <div align="center" style="margin-bottom: 50px;">
+        <!-- <input type="file" id="file" style="display: none;" onchange="uploadImageAsPromise()" accept="image/jpeg">
+        <button type="button" id="fileInput" onclick="uploadImage()" accept="image/jpeg" class="btn btn-secondary">Upload Images</button> -->
+        <!-- <button type="button" id="fileInput" onclick="uploadImage()" accept="image/jpeg" class="btn btn-secondary">Upload Images</button> -->
+
+        <input type="file" id="file" accept="image/jpeg" class="btn btn-secondary">
+        <button type="button" onclick="uploadImage()" accept="image/jpeg" class="btn btn-secondary" id="uploadBtn">Upload Images</button>
+    </div>
+    <div id="image-container"></div>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
