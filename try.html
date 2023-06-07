@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.8.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@0.4.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection/dist/face-landmarks-detection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection/dist/face-landmarks-detection.model.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection/dist/face-landmarks-detection.worker.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+</head>
+<body>
+  <form id="upload-form">
+    <input type="file" id="image-input">
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+
+    // Function to upload image and detect faces
+    const uploadAndDetectFaces = async (file) => {
+      try {
+        const imageUrl = "https://firebasestorage.googleapis.com/v0/b/pythonimageupload-99434.appspot.com/o/praadiga%2Fstranger34.jpg?alt=media";
+
+        // Detect faces using face-api.js
+        const image = await faceapi.fetchImage(imageUrl);
+        const detection = await faceapi.detectSingleFace(image).withFaceLandmarks();
+
+        // Extract face coordinates
+        const faceCoordinates = detection.landmarks.positions.map(position => ({
+          x: position.x,
+          y: position.y
+        }));
+
+        console.log('Face coordinates:', faceCoordinates);
+
+        console.log('Image uploaded and face coordinates saved to Firestore.');
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Handle form submission
+    const form = document.getElementById('upload-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById('image-input');
+      const file = fileInput.files[0];
+      if (file) {
+        uploadAndDetectFaces(file);
+      }
+    });
+  </script>
+</body>
+</html>
